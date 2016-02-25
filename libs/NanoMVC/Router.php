@@ -1,5 +1,6 @@
 <?php
 namespace NanoMVC;
+use Configuration;
 
 /**
  * Router for URL requests
@@ -7,23 +8,20 @@ namespace NanoMVC;
  */
 class Router {
     
-    public function run(){        
+    public function getRoute(){        
         $url = $this->getUrlParts();       
         if(isset($url[0]) && class_exists(ucfirst($url[0]) . 'Presenter')){
-            $class = ucfirst($url[0]) . 'Presenter';
+            $presenter = ucfirst($url[0]) . 'Presenter';
             if(isset($url[1]) && file_exists(APP_DIR . 'template/' . $url[0] . '/' . $url[1] . '.phtml')){
                 $template = $url[1];
             } else {
                 $template = 'default';
             }
         } else {
-            $class = ucfirst(Configuration::$templates['defaultPresenter']) . 'Presenter';
+            $presenter = ucfirst(Configuration::$templates['defaultPresenter']) . 'Presenter';
             $template = Configuration::$templates['defaultTemplate'];
         }
-        $presenter = new $class();
-        $presenter->presenterName = str_replace('Presenter', '', $class);
-        $presenter->render(ucfirst($template));
-        
+        return array($presenter, $template);
     }
     
     private function getUrlParts(){
