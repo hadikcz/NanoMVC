@@ -1,19 +1,20 @@
 <?php
-use Tracy\Debugger;
-
 // Constants
 define('ROOT_DIR', __DIR__);
 define('APP_DIR', ROOT_DIR . '/app/');
 define('TEMP_DIR', ROOT_DIR . '/temp/');
+define('LIBS_DIR', ROOT_DIR . '/libs/');
 
 // Autoloader
-require APP_DIR . '/service/autoload.php';
+require LIBS_DIR . '/NanoMVC/autoload.php';
 
 // Debugger
-require ROOT_DIR . '/libs/tracy/tracy.php';
+use Tracy\Debugger;
+require LIBS_DIR . '/Tracy/tracy.php';
 Debugger::enable();
 
 require APP_DIR . '/config.php';
 
-$test = new TestModel();
-$test->foo();
+
+$router = new NanoMvc\Router();
+$router->run();

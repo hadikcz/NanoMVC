@@ -1,5 +1,9 @@
 <?php
+namespace NanoMVC;
+use PDO, Configuration;
+
 /**
+ * Simple PDO connector
  * @author Hadik <hadikcze@gmail.com>
  */
 class PDOConnection {
@@ -16,7 +20,7 @@ class PDOConnection {
 	}
 	
 	private static function createConnection(){
-		$db = new PDO("mysql:host=".Configuration::$connection['host']."dbname=".Configuration::$connection['database'].", '".Configuration::$connection['username']."', '".Configuration::$connection['password']."'");
+		$db = new PDO("mysql:host=".Configuration::$connection['host'].";dbname=".Configuration::$connection['database'], Configuration::$connection['username'], Configuration::$connection['password']);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$db->query('SET NAMES utf8');
 		return $db;
