@@ -1,1 +1,11 @@
-<?= $homepage ?>
+This is the homepage default template.<br><br>
+
+<h3>For all examples look at source code</h3><br><br>
+
+<a href="<?= NanoMVC\URL::create('Homepage', 'saveUser')?>">Action example</a> (Look at source code - HomepagePresenter::actionSaveUser)<br>
+
+<a href="<?= NanoMVC\URL::create('Homepage', 'urlRedir')?>">Action with URL redirect</a> (HomepagePresenter::actionUrlRedir)<br>
+
+<a href="<?= NanoMVC\URL::create('Examples')?>">Page with flash message</a> (ExamplesPresenter::renderDefault)<br>
+
+<a href="<?= NanoMVC\URL::create('Examples', 'redirectWithParameters')?>">Example how redirect to another presenter/action with $_GET parameters</a> (ExamplesPresenter::actionRedirectWithParameters)<br>

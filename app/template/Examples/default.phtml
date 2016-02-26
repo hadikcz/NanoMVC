@@ -1,0 +1,12 @@
+Under this text was rendered flash messages<br><br>
+
+
+<?php foreach($flashMessages  as $message){ ?>
+    <?= $message ?> <br>
+<?php } ?>
+
+
+<?php 
+    if(isset($_GET['warnUser']) && $_GET['warnUser'] == 1){?>
+        <h1>This line will be visible only from ExamplesPresenter::actionRedirectWithParameters</h1>
+<?php } ?>

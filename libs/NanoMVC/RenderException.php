@@ -1,9 +1,11 @@
 <?php
 namespace NanoMVC;
 
+use Exception;
+
 /**
  * @author Hadik <hadikcze@gmail.com>
  */
-class RenderExpection extends Exception {
+class RenderException extends Exception {
 
 }
